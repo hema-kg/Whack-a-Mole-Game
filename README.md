@@ -2,6 +2,7 @@
 Whack-a-Mole is a classic — fun Game
 
 Description
+
 ✅ Moles popping up randomly
 
 ✅ Click to score
