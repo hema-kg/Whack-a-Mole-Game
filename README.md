@@ -12,6 +12,7 @@ Description
 ✅ Final score screen
 
 🧩 Tech:
+
 React state & effects
 
 useEffect to control timing
