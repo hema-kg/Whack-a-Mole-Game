@@ -86,9 +86,7 @@ export default function WhackAMole() {
                             <>
                                 <div className="game-over">Game Over</div>
                                 <div className="score">Score: {score}</div>
-                                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                                    <button onClick={Restart}>Play Again</button>
-                                </div>
+                                <button onClick={Restart} style={styles.button}>Play Again</button>
                             </>
                         ) :(
                 <>
