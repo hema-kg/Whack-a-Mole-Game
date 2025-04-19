@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./game.css";
 
 const NUM_HOLES = 9;
 const GAME_TIME = 30; // seconds
@@ -32,7 +33,7 @@ export default function WhackAMole() {
             // Countdown timer
             countdownInterval = setInterval(() => {
                 setTimeLeft((prev) => {
-                    if (prev <= 1) {
+                    if (prev < 1) {
                         clearInterval(moleInterval);
                         clearInterval(countdownInterval);
                         setIsPlaying(false);
@@ -85,31 +86,28 @@ export default function WhackAMole() {
     };
 
     return (
-        <div style={styles.container}>
+        <div className="container" >
             <h1>🐹 Whack-a-Mole</h1>
             {!gameStarted ? (
-                <button onClick={handleStart} style={styles.button}>
+                <button onClick={handleStart} className="button">
                     Start Game
                 </button>
             ) : gameOver ? (
                             <>
                                 <div className="game-over">Game Over</div>
                                 <div className="score">Score: {score}</div>
-                                <button onClick={Restart} style={styles.button}>Play Again</button>
+                                <button onClick={Restart} className="button">Play Again</button>
                             </>
                         ) :(
                 <>
                     <p>Time Left: {timeLeft}s</p>
                     <p>Score: {score}</p>
-                    <div style={styles.grid}>
+                    <div className="grid">
                         {Array.from({ length: NUM_HOLES }).map((_, i) => (
                             <div
                                 key={i}
                                 onClick={() => handleWhack(i)}
-                                style={{
-                                    ...styles.hole,
-                                    backgroundColor: i === activeHole ? "#ffcc00" : "#444",
-                                }}
+                                className={`hole ${i === activeHole ? "active" : ""}`}
                             >
                                 {i === activeHole ? "🐹" : ""}
                             </div>
@@ -121,7 +119,7 @@ export default function WhackAMole() {
     );
 }
 
-const styles = {
+/*const styles = {
     container: {
         textAlign: "center",
         fontFamily: "sans-serif",
@@ -154,3 +152,4 @@ const styles = {
         cursor: "pointer",
     },
 };
+*/
