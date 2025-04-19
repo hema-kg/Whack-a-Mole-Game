@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const NUM_HOLES = 9;
-const GAME_TIME = 10; // seconds
+const GAME_TIME = 30; // seconds
 
 // Game Sounds
 const score_sound = new Audio("/score.mp3");
