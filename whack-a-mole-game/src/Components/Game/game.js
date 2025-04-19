@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 const NUM_HOLES = 9;
-const GAME_TIME = 5; // seconds
+const GAME_TIME = 10; // seconds
+
+// Game Sounds
+const score_sound = new Audio("/score.mp3");
+const bg_sound = new Audio("/bg-music.mp3");
 
 export default function WhackAMole() {
     const [score, setScore] = useState(0);
@@ -16,6 +20,9 @@ export default function WhackAMole() {
         let countdownInterval;
 
         if (isPlaying) {
+
+            bg_sound.play();
+
             // Mole popping logic
             moleInterval = setInterval(() => {
                 const randomHole = Math.floor(Math.random() * NUM_HOLES);
@@ -31,6 +38,7 @@ export default function WhackAMole() {
                         setIsPlaying(false);
                         setActiveHole(null);
                         setGameOver(true);
+                        bg_sound.pause();
                         setScore((currentScore) => {
                             alert(`Game Over! Your score is ${currentScore}.`);
                             return currentScore;
@@ -70,6 +78,7 @@ export default function WhackAMole() {
 
     const handleWhack = (index) => {
         if (index === activeHole && isPlaying) {
+            score_sound.play();
             setScore(score + 1);
             setActiveHole(null);
         }
