@@ -20,3 +20,12 @@ useEffect to control timing
 setInterval for mole popping
 
 Basic CSS Grid for layout
+
+⚙️ Setup
+
+1. Clone the Repository
+git clone https://github.com/hema-kg/Whack-a-Mole-Game.git
+cd whack-a-mole-game
+
+2. Run:
+npm start
