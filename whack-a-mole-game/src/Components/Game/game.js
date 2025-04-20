@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const NUM_HOLES = 9;
-const GAME_TIME = 5; // seconds
+const GAME_TIME = 30; // seconds
 
 // Game Sounds
 const score_sound = new Audio("/score.mp3");
