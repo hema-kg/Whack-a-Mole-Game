@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./game.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRedo } from '@fortawesome/free-solid-svg-icons';
+import { faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const NUM_HOLES = 9;
-const GAME_TIME = 30; // seconds
+const GAME_TIME = 5; // seconds
 
 // Game Sounds
 const score_sound = new Audio("/score.mp3");
@@ -17,6 +17,7 @@ export default function WhackAMole() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [gameStarted, setGameStarted] = useState(false);
     const [gameOver, setGameOver] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         let moleInterval;
@@ -40,6 +41,7 @@ export default function WhackAMole() {
                         setIsPlaying(false);
                         setActiveHole(null);
                         setGameOver(true);
+                        setShowModal(true);
                         bg_sound.pause();
                         return 0;
                     }
@@ -85,6 +87,11 @@ export default function WhackAMole() {
         }
     };
 
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setGameStarted(false);
+    }
+
     return (
         <div className="container" >
             <h1>🐹 Whack-a-Mole</h1>
@@ -111,9 +118,12 @@ export default function WhackAMole() {
             )}
 
             {/* Game Over Modal */}
-            {gameOver && (
+            {showModal && gameOver && (
                 <div className="modal">
                     <div className="modal-content">
+                    <button onClick={handleCloseModal} className="close-btn">
+                         <FontAwesomeIcon icon={faTimes} />
+                    </button>
                         <h2 className="game-over">Game Over</h2>
                         <p>Your Score: {score}</p>
                         <button onClick={Restart} className="button">
