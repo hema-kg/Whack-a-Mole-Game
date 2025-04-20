@@ -1,7 +1,7 @@
 # Whack-a-Mole-Game
 Whack-a-Mole is a classic — Fun Game
 
-Description
+## Description
 
 ✅ Moles popping up randomly
 
@@ -11,7 +11,7 @@ Description
 
 ✅ Final score screen
 
-🧩 Tech:
+## 🧩 Tech:
 
 React state & effects
 
@@ -21,9 +21,9 @@ setInterval for mole popping
 
 Basic CSS Grid for layout
 
-⚙️ Setup
+## ⚙️ Setup
 
-1. Clone the Repository
+### 1. Clone the Repository
 
    ```
    git clone https://github.com/hema-kg/Whack-a-Mole-Game.git
@@ -31,7 +31,7 @@ Basic CSS Grid for layout
    cd whack-a-mole-game
    ```
 
-2. Run:
+### 2. Run:
    
    ```
    npm start
