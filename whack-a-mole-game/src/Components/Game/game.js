@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./game.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRedo } from '@fortawesome/free-solid-svg-icons';
 
 const NUM_HOLES = 9;
-const GAME_TIME = 30; // seconds
+const GAME_TIME = 5; // seconds
 
 // Game Sounds
 const score_sound = new Audio("/score.mp3");
@@ -21,7 +23,6 @@ export default function WhackAMole() {
         let countdownInterval;
 
         if (isPlaying) {
-
             bg_sound.play();
 
             // Mole popping logic
@@ -40,10 +41,6 @@ export default function WhackAMole() {
                         setActiveHole(null);
                         setGameOver(true);
                         bg_sound.pause();
-                        setScore((currentScore) => {
-                            alert(`Game Over! Your score is ${currentScore}.`);
-                            return currentScore;
-                        });
                         return 0;
                     }
                     return prev - 1;
@@ -73,6 +70,9 @@ export default function WhackAMole() {
             setIsPlaying(true);
             setGameOver(false);
             setGameStarted(true);
+            bg_sound.pause(); // Stop the current playback
+            bg_sound.currentTime = 0; // Reset the audio to the beginning
+            bg_sound.play(); // Start playing the audio from the beginning
         }
         , 10);
     };
@@ -92,13 +92,7 @@ export default function WhackAMole() {
                 <button onClick={handleStart} className="button">
                     Start Game
                 </button>
-            ) : gameOver ? (
-                            <>
-                                <div className="game-over">Game Over</div>
-                                <div className="score">Score: {score}</div>
-                                <button onClick={Restart} className="button">Play Again</button>
-                            </>
-                        ) :(
+            ) : (
                 <>
                     <p>Time Left: {timeLeft}s</p>
                     <p>Score: {score}</p>
@@ -115,41 +109,19 @@ export default function WhackAMole() {
                     </div>
                 </>
             )}
+
+            {/* Game Over Modal */}
+            {gameOver && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h2 className="game-over">Game Over</h2>
+                        <p>Your Score: {score}</p>
+                        <button onClick={Restart} className="button">
+                            <FontAwesomeIcon icon={faRedo} /> Play Again
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
-
-/*const styles = {
-    container: {
-        textAlign: "center",
-        fontFamily: "sans-serif",
-        marginTop: "2rem",
-    },
-    grid: {
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 100px)",
-        gridGap: "10px",
-        justifyContent: "center",
-        marginTop: "1rem",
-    },
-    hole: {
-        width: "100px",
-        height: "100px",
-        backgroundColor: "#444",
-        color: "#000",
-        fontSize: "2rem",
-        borderRadius: "50%",
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        userSelect: "none",
-    },
-    button: {
-        padding: "10px 20px",
-        fontSize: "1rem",
-        margin: "1rem 0",
-        cursor: "pointer",
-    },
-};
-*/
