@@ -11,7 +11,7 @@ Whack-a-Mole is a classic — Fun Game
 
 ✅ Final score screen
 
-## 🧩 Tech:
+## 🧩 Tech
 
 React state & effects
 
@@ -31,7 +31,7 @@ Basic CSS Grid for layout
    cd whack-a-mole-game
    ```
 
-### 2. Run:
+### 2. Run
    
    ```
    npm start
