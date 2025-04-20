@@ -31,7 +31,13 @@ Basic CSS Grid for layout
    cd whack-a-mole-game
    ```
 
-### 2. Run
+### 2. Backend Setup
+   
+   ```
+   npm install
+   ```
+
+### 3. Run
    
    ```
    npm start
